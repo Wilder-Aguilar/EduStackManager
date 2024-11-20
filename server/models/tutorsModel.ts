@@ -1,43 +1,34 @@
 import { DataTypes, Model } from 'sequelize';
 import connectionDb from '../database/conectionDb';
 
-const RegistersModel = connectionDb.define(
-    'Registers',
+const TutorsModel = connectionDb.define(
+    'Tutors',
     {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        id_course: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         name: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        email: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        gender: {
+        lastname: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
         age: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER
+        },
+        relationship: {
+            type: DataTypes.TEXT,
             allowNull: false,
         },
-        id_tutor: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         },
-    },
     {
         timestamps: false,
     });
 
-console.log(RegistersModel === connectionDb.models.Registers);
+console.log(TutorsModel === connectionDb.models.Tutors);
 
-export default RegistersModel;
+export default TutorsModel;

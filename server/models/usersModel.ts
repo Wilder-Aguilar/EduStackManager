@@ -1,15 +1,15 @@
 import { DataTypes, Model } from 'sequelize';
 import connectionDb from '../database/conectionDb';
 
-const RegistersModel = connectionDb.define(
-    'Registers',
+const UsersModel = connectionDb.define(
+    'Users',
     {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        id_course: {
+        role:{
             type: DataTypes.INTEGER,
             allowNull: false,
         },
@@ -21,23 +21,15 @@ const RegistersModel = connectionDb.define(
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        gender: {
+        password: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        age: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         },
-        id_tutor: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-    },
     {
         timestamps: false,
     });
 
-console.log(RegistersModel === connectionDb.models.Registers);
+console.log(UsersModel === connectionDb.models.Users);
 
-export default RegistersModel;
+export default UsersModel;

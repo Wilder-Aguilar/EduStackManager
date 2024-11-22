@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import Register from '../models/registersModel';
 import RegistersModel from '../models/registersModel';
 
 

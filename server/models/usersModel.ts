@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import connectionDb from '../database/conectionDb';
 
 const UsersModel = connectionDb.define(
-    'Users',
+    'User',
     {
         id: {
             type: DataTypes.INTEGER,

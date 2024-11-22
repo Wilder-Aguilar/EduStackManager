@@ -17,6 +17,18 @@ const RegistersModel = connectionDb.define(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        lastname: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        date_of_birth: {
+            type: DataTypes.DATEONLY,
+            allowNull: false,
+        },
+        phone: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         email: {
             type: DataTypes.TEXT,
             allowNull: false,

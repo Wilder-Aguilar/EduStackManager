@@ -24,6 +24,10 @@ const TutorsModel = connectionDb.define(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        email: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         },
     {
         timestamps: false,

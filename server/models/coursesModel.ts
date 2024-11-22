@@ -17,9 +17,13 @@ const CoursesModel = connectionDb.define(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        date: {
+            type: DataTypes.DATEONLY,
+            allowNull: true,
+        },
         schedule: {
             type: DataTypes.TIME,
-            allowNull: false,
+            allowNull: true,
         },
         link: {
             type: DataTypes.STRING,

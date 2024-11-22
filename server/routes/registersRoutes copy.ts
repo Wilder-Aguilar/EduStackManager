@@ -4,7 +4,6 @@ import { getAllRegisters, getRegisterById, createRegister, deleteRegister, updat
 
 export const registerRouter = Router();
 
-
 registerRouter.get('/',
   getAllRegisters
 );

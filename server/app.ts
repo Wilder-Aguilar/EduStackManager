@@ -1,7 +1,9 @@
 import connectionDb from './database/conectionDb';
 import { Sequelize } from 'sequelize';
-import { registerRouter } from './routes/registersRoutes';
+import { registerRouter} from './routes/registersRoutes';
 import { courseRouter } from './routes/coursesRoutes';
+import { userRouter } from './routes/usersRoutes';
+import { tutorRouter } from './routes/tutorsRoutes';
 import { PORT } from './config';
 import express, { Express } from 'express';
 import CoursesModel from './models/coursesModel';
@@ -21,8 +23,10 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use('/api/registers', registerRouter);
+app.use('/api/users', userRouter);
 app.use('/api/courses', courseRouter);
+app.use('/api/registers', registerRouter);
+app.use('/api/tutors', tutorRouter);
 
 const initializeDatabase = async (sequelize: Sequelize) => {
     try {

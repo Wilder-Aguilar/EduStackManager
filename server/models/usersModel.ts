@@ -30,6 +30,6 @@ const UsersModel = connectionDb.define(
         timestamps: false,
     });
 
-console.log(UsersModel === connectionDb.models.Users);
+console.log(UsersModel === connectionDb.models.User);
 
 export default UsersModel;

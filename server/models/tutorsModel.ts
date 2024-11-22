@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import connectionDb from '../database/conectionDb';
 
 const TutorsModel = connectionDb.define(
-    'Tutors',
+    'Tutor',
     {
         id: {
             type: DataTypes.INTEGER,
@@ -33,6 +33,6 @@ const TutorsModel = connectionDb.define(
         timestamps: false,
     });
 
-console.log(TutorsModel === connectionDb.models.Tutors);
+console.log(TutorsModel === connectionDb.models.Tutor);
 
 export default TutorsModel;

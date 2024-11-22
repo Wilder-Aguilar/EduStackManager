@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import connectionDb from '../database/conectionDb';
 
 const RegistersModel = connectionDb.define(
-    'Registers',
+    'Register',
     {
         id: {
             type: DataTypes.INTEGER,
@@ -50,6 +50,6 @@ const RegistersModel = connectionDb.define(
         timestamps: false,
     });
 
-console.log(RegistersModel === connectionDb.models.Registers);
+console.log(RegistersModel === connectionDb.models.Register);
 
 export default RegistersModel;

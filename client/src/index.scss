@@ -1,68 +1,231 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+$primary-color: #3498db;
+$font-size-base: 16px;
+$content-width: 1000px;
+$breakpoint: 799px;
+$nav-height: 70px;
+$nav-background: #fff;
+$nav-font-color: #0c0c0c;
+$link-hover-color: #f8b500;
+$footer-bg-color: #333;
+$footer-text-color: #fff;
+$padding: 10px;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+body{
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;     // Organiza los elementos verticalmente
+  min-height: 100vh;           // Asegura que el body ocupe al menos el 100% de la altura de la ventana
+  margin: 0;                   // Elimina márgenes predeterminados
+  padding: 0;                  // Elimina relleno predeterminado
+  box-sizing: border-box;   
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.main-content {
+  flex: 1;                     // Hace que este contenedor ocupe el espacio restante disponible
+  margin-top: $nav-height;      // Deja espacio debajo del nav para que no se sobreponga
+  padding: 20px;                // Añade algo de espacio alrededor del contenido
+  overflow: hidden;                   // Hace que este contenedor ocupe el espacio restante disponible
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+html, body {
+  height: 100%;
+  overflow-y: auto; 
+}
+
+.navigation {
+  height: $nav-height;         // Asigna la altura del nav
+  width: 100%;                 // Asegura que el nav ocupe todo el ancho de la pantalla
+  position: fixed;             // Fija el nav en la parte superior de la pantalla
+  top: 0;                      // Posiciona el nav en la parte superior
+  left: 0;                     // Alinea el nav a la izquierda
+  background-color: $nav-background; // Color de fondo del nav
+  z-index: 10;  
+}
+
+.nav-container {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+.brand {
+  position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: $nav-height;
+  text-transform: uppercase;
+  font-size: 1.4em;
+    
+  a,
+  a:visited {
+    color: $nav-font-color;
+    text-decoration: none;
+  }
+}
+
+nav {
+  float: right;
+  ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    li {
+      float: left;
+      position: relative;
+      a {
+        display: block;
+        padding: 10px 20px 0 20px;
+        line-height: 50px;
+        background: $nav-background;
+        color: $nav-font-color;
+        text-decoration: none;
+        
+        
+         &::before {
+           transition: 300ms;
+           height: 5px;
+           content: "";
+           position: absolute;
+           background-color: $link-hover-color;
+           width: 0%;
+           bottom: 0px;
+        }
+
+        &:hover::before{
+          width: 70%;
+        }
+        &:not(:only-child):after {
+          padding-left: 4px;
+          content: ' ▾';
+        }
+      } // Dropdown list
+      ul li {
+        min-width: 190px;
+        a {
+          padding: 15px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $nav-background;
+  height: $nav-height;
+  width: $nav-height;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 100%; 
+  margin: 0 auto; 
+  height: 100vh;
+}
+
+.card-item{
+  background-color: #3498db;
+}
+
+.footer {
+  width: 100%;                 // Asegura que el footer ocupe todo el ancho de la pantalla
+  background-color: $footer-bg-color;
+  color: $footer-text-color;
+  padding: $padding;
+  text-align: center;
+  position: relative;          // Sigue el flujo normal del documento
+  margin-top: auto;             // Hace que el footer se empuje hacia abajo cuando el contenido es pequeño
+  height: 100px;                // Asigna una altura fija al footer si es necesario
+}
+
+@media only screen and (max-width: $breakpoint) {
+  .nav-mobile {
+    display: block;
+  }
+  nav {
+      width: 100%;
+      padding: $nav-height 0 15px;
+    ul {
+      display: none;
+      
+      li{
+        float: none;
+        
+        a {
+          padding: 15px;
+          line-height: 20px;
+          
+          &:hover::before{
+            width: 20%;
+          }
+        }
+        ul li a {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+  .nav-dropdown {
+    position: static;
+  }
+}
+
+#nav-toggle {
+  position: absolute;
+  left: 18px;
+  top: 22px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  padding: 10px 35px 16px 0px;
+  span,
+  span:before,
+  span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: $link-hover-color;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 300ms ease-in-out;
+  }
+  span:before {
+    top: -10px;
+  }
+  span:after {
+    bottom: -10px;
+  }
+  &.active span {
+    background-color: transparent;
+    &:before,
+    &:after {
+      top: 0;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+@media screen and (min-width: $breakpoint) {
+  .nav-list {
+    display: block !important;
   }
 }
+
+
+
+.button {
+  background-color: $primary-color;
+  font-size: $font-size-base; }
+
